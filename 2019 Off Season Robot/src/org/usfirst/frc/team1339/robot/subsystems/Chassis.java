@@ -6,12 +6,14 @@ import org.usfirst.frc.team1339.robot.commands.Drive;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  *
  */
 public class Chassis extends Subsystem {
+	public Spark sparkyTheMotor;
 	public TalonSRX leftTop;
 	TalonSRX leftFront;
 	TalonSRX leftBack;
@@ -21,12 +23,16 @@ public class Chassis extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	public Chassis() {
+		
 		leftTop = new TalonSRX(RobotMap.leftTopDriveMotor);
 		leftFront = new TalonSRX(RobotMap.leftFrontDriveMotor);
 		leftBack = new TalonSRX(RobotMap.leftBackDriveMotor);
 		rightTop = new TalonSRX(RobotMap.rightTopDriveMotor);
 		rightFront = new TalonSRX(RobotMap.rightFrontDriveMotor);
 		rightBack = new TalonSRX(RobotMap.rightBackDriveMotor);
+		
+		sparkyTheMotor = new Spark(2);
+		
 		
 		leftFront.follow(leftTop);
 		leftBack.follow(leftTop);
